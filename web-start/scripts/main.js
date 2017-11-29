@@ -55,7 +55,7 @@ function FriendlyChat() {
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
 FriendlyChat.prototype.initFirebase = function() {
-    // Shortcuts to Firebase SDK features.
+  // Shortcuts to Firebase SDK features.
   this.auth = firebase.auth();
   this.database = firebase.database();
   this.storage = firebase.storage();
@@ -157,7 +157,7 @@ FriendlyChat.prototype.saveImageMessage = function(event) {
 
 // Signs-in Friendly Chat.
 FriendlyChat.prototype.signIn = function() {
-    // Sign in Firebase using popup auth and Google as the identity provider.
+  // Sign in Firebase using popup auth and Google as the identity provider.
   var provider = new firebase.auth.GoogleAuthProvider();
   this.auth.signInWithPopup(provider);
 };
@@ -172,9 +172,9 @@ FriendlyChat.prototype.signOut = function() {
 FriendlyChat.prototype.onAuthStateChanged = function(user) {
   if (user) { // User is signed in!
     // Get profile pic and user's name from the Firebase user object.
-    var profilePicUrl = null;   // TODO(DEVELOPER): Get profile pic.
-    var userName = null;        // TODO(DEVELOPER): Get user's name.
-
+    var profilePicUrl = user.photoURL; // Only change these two lines!
+    var userName = user.displayName;   // Only change these two lines!
+    
     // Set the user's profile pic and name.
     this.userPic.style.backgroundImage = 'url(' + profilePicUrl + ')';
     this.userName.textContent = userName;
